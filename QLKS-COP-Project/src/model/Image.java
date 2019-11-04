@@ -7,6 +7,12 @@ public class Image {
 	public long getImageId() {
 		return imageId;
 	}
+	public Image(long imageId, boolean type, String link) {
+		super();
+		this.imageId = imageId;
+		this.type = type;
+		this.link = link;
+	}
 	public void setImageId(long imageId) {
 		this.imageId = imageId;
 	}

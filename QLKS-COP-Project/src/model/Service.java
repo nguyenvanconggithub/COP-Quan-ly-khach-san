@@ -9,6 +9,11 @@ public class Service {
 	public void setServiceId(long serviceId) {
 		this.serviceId = serviceId;
 	}
+	public Service(long serviceId, String name) {
+		super();
+		this.serviceId = serviceId;
+		this.name = name;
+	}
 	public String getName() {
 		return name;
 	}
