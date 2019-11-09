@@ -13,8 +13,8 @@ public class HotelDTO {
 	private int star;
 	private String address;
 	private String pricePerNight;
-	private List<ImageDTO> images = new ArrayList<ImageDTO>();
-	private List<ServiceDTO> services = new ArrayList<ServiceDTO>();
+	private List<String> images = new ArrayList<String>();
+	private List<String> services = new ArrayList<String>();
 	private List<ChamberDTO> chambers = new ArrayList<ChamberDTO>();
 
 	public HotelDTO(Hotel hotel, String pricePerNight, List<Image> images, List<Service> services,
@@ -24,8 +24,8 @@ public class HotelDTO {
 		this.star = hotel.getStar();
 		this.address = hotel.getAddress();
 		this.pricePerNight = pricePerNight;
-		images.forEach(image -> this.images.add(new ImageDTO(image)));
-		services.forEach(service -> this.services.add(new ServiceDTO(service)));
+		images.forEach(image -> this.images.add(image.getLink()));
+		services.forEach(service -> this.services.add(service.getName()));
 		chambers.forEach(chamber -> this.chambers.add(new ChamberDTO(chamber)));
 	}
 
@@ -67,19 +67,19 @@ public class HotelDTO {
 		this.pricePerNight = pricePerNight;
 	}
 
-	public List<ImageDTO> getImages() {
+	public List<String> getImages() {
 		return images;
 	}
 
-	public void setImages(List<ImageDTO> images) {
+	public void setImages(List<String> images) {
 		this.images = images;
 	}
 
-	public List<ServiceDTO> getServices() {
+	public List<String> getServices() {
 		return services;
 	}
 
-	public void setServices(List<ServiceDTO> services) {
+	public void setServices(List<String> services) {
 		this.services = services;
 	}
 

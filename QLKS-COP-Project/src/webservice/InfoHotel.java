@@ -19,16 +19,16 @@ import model.Service;
 
 @Path("/info-hotel")
 public class InfoHotel {
-		
+
 	@GET
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    public HotelDTO getInfoHotel() {
+	@Produces({ MediaType.APPLICATION_JSON })
+	public HotelDTO getInfoHotel() {
 		Hotel hotel = HotelDAO.getHotelInfo();
 		String pricePerNight = HotelDAO.getPricePerNight();
 		List<Image> images = ImageDAO.getImageHotel();
 		List<Service> services = ServiceDAO.getHotelService();
 		List<Chamber> chambers = ChamberDAO.getChamberWS();
 		HotelDTO infoHotel = new HotelDTO(hotel, pricePerNight, images, services, chambers);
-        return infoHotel;
-    }
+		return infoHotel;
+	}
 }
