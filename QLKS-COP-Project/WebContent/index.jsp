@@ -62,7 +62,7 @@
 						<c:if test="${sessionScope.role != null }">
 							<li><a href="home">Trang chủ</a></li>
 							<c:if test="${sessionScope.role == 0 }">
-								<li><a href="hotel.html">Quản lý khách sạn</a></li>
+								<li><a href="manage-hotel">Quản lý khách sạn</a></li>
 								<li><a href="chamber.html">Quản lý phòng</a></li>
 								<li><a href="employee.html">Quản lý Nhân viên</a></li>
 								<li><a href="employee.html">Quản lý Tài khoản</a></li>
