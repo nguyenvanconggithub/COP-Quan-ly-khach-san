@@ -64,7 +64,8 @@
 							<c:if test="${sessionScope.role == 0 }">
 								<li><a href="hotel.html">Quản lý khách sạn</a></li>
 								<li><a href="chamber.html">Quản lý phòng</a></li>
-								<li><a href="employee.html">Nhân viên</a></li>
+								<li><a href="employee.html">Quản lý Nhân viên</a></li>
+								<li><a href="employee.html">Quản lý Tài khoản</a></li>
 							</c:if>
 							<c:if test="${sessionScope.role == 1 }">
 								<li><a href="check_in.html">Đặt phòng</a></li>
