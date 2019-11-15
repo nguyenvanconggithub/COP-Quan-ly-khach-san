@@ -12,6 +12,10 @@ public class Chamber {
 	private boolean isVip;
 	private boolean isEmpty;
 	private String note;
+	
+	public Chamber() {
+		
+	}
 	public long getChamber_id() {
 		return chamber_id;
 	}
