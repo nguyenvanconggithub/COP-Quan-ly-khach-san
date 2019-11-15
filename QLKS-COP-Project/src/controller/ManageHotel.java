@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import Image.Compress.balanced.*;
 import connection.HotelDAO;
 import connection.ImageDAO;
 import connection.ServiceDAO;
@@ -111,7 +112,7 @@ public class ManageHotel extends HttpServlet {
 	                        //Save Link to SQL
 	                        ImageDAO.Instance().setNewHotelImage(linkToSaveInSQL);
 	                        // Ghi vào file.
-	                        part.write(filePath);
+	                        BLdown.ImageToPath(part.getInputStream(), filePath);
 	                    }
 
 	                }
@@ -188,7 +189,7 @@ public class ManageHotel extends HttpServlet {
 	                        //Save Link to SQL
 	                        ImageDAO.Instance().setNewHotelImage(linkToSaveInSQL);
 	                        // Ghi vào file.
-	                        part.write(filePath);
+	                        BLdown.ImageToPath(part.getInputStream(), filePath);
 	                        
 	                    }
 	                }
