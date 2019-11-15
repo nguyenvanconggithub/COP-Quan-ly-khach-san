@@ -4,7 +4,7 @@ public class Account {
 	private long accountId;
 	private String username;
 	private String password;
-	private boolean role;
+	private int role;
 	public long getAccountId() {
 		return accountId;
 	}
@@ -28,10 +28,10 @@ public class Account {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public boolean isRole() {
+	public int isRole() {
 		return role;
 	}
-	public void setRole(boolean role) {
+	public void setRole(int role) {
 		this.role = role;
 	}
 }

@@ -13,6 +13,7 @@
 		<jersey.version>1.19.4</jersey.version>
 		<lombok.version>1.16.20</lombok.version>
 		<sqlCon.version>8.0.15</sqlCon.version>
+		<jstl.version>1.2</jstl.version>
 	</properties>
 
 	<dependencies>
@@ -44,6 +45,13 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${sqlCon.version}</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/jstl/jstl -->
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+		</dependency>
+
 
 	</dependencies>
 	<build>
