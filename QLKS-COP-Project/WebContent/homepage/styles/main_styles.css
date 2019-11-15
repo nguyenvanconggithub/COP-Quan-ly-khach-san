@@ -1282,6 +1282,7 @@ section
 	position: relative;
 	padding-top: 59px;
 	border-top: solid 2px #ff9000;
+	background-image: url(../images/footer.jpg);
 }
 .footer_content
 {

@@ -39,8 +39,40 @@ public class HotelDAO {
 			}
 			return hotelInfo;
 		} catch (Exception e) {
-			System.out.println("HotelDAO - alreadyHaveData err: " + e);
+			System.out.println("HotelDAO - getHotelInfomation err: " + e);
 		}
 		return null;
+	}
+	public boolean updateInfo(Hotel newInfo) {
+		try {
+			boolean result = false;
+			String query = "UPDATE hotel SET hotel_name = ?, star = ?, address = ?";
+			PreparedStatement preStmt = Connection.Connecter().prepareStatement(query);
+			preStmt.setString(1, newInfo.getHotelName());
+			preStmt.setInt(2, newInfo.getStar());
+			preStmt.setString(3, newInfo.getAddress());
+			
+			result = preStmt.execute();
+			return result;
+		} catch (Exception e) {
+			System.out.println("HotelDAO - updateInfo err: " + e);
+		}
+		return false;
+	}
+	public boolean insertInfo(Hotel newInfo) {
+		try {
+			boolean result = false;
+			String query = "INSERT INTO hotel (hotel_name, star, address, price) VALUES(?,?,?,?)";
+			PreparedStatement preStmt = Connection.Connecter().prepareStatement(query);
+			preStmt.setString(1, newInfo.getHotelName());
+			preStmt.setInt(2, newInfo.getStar());
+			preStmt.setString(3, newInfo.getAddress());
+			preStmt.setInt(4, 0);
+			result = preStmt.execute();
+			return result;
+		} catch (Exception e) {
+			System.out.println("HotelDAO - insertInfo err: " + e);
+		}
+		return false;
 	}
 }
