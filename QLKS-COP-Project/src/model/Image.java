@@ -22,9 +22,12 @@ public class Image {
 	public void setLink(String link) {
 		this.link = link;
 	}
+	
 	@Override
 	public String toString() {
 		return "Image [imageId=" + imageId + ", type=" + type + ", link=" + link + "]";
 	}
+
+	
 	
 }
