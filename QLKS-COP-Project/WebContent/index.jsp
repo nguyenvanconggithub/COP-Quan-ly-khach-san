@@ -28,16 +28,6 @@
 	href="homepage/styles/responsive.css">
 </head>
 <body>
-	<div class="parallax-mirror"
-		style="visibility: hidden; z-index: -100; position: fixed; top: 0px; left: 0px; overflow: hidden; height: 456px; width: 1349px; transform: translate3d(0px, 661px, 0px);">
-		<img class="parallax-slider" src="homepage/images/footer.jpg"
-			style="position: absolute; height: 491px; width: 1349px; max-width: none; transform: translate3d(0px, -109.2px, 0px);">
-	</div>
-	<div class="parallax-mirror"
-		style="visibility: visible; z-index: -100; position: fixed; top: 0px; left: 0px; overflow: hidden; transform: translate3d(0px, 0px, 0px); height: 400px; width: 1349px;">
-		<img class="parallax-slider" src="homepage/images/home.jpg"
-			style="transform: translate3d(0px, -178px, 0px); position: absolute; height: 706px; width: 1349px; max-width: none;">
-	</div>
 	<div class="super_container">
 
 		<!-- Header -->
@@ -64,8 +54,8 @@
 							<c:if test="${sessionScope.role == 0 }">
 								<li><a href="manage-hotel">Quản lý khách sạn</a></li>
 								<li><a href="chamber.html">Quản lý phòng</a></li>
-								<li><a href="employee.html">Quản lý Nhân viên</a></li>
-								<li><a href="employee.html">Quản lý Tài khoản</a></li>
+								<li><a href="employee.html">Quản lý nhân viên</a></li>
+								<li><a href="employee.html">Quản lý tài khoản</a></li>
 							</c:if>
 							<c:if test="${sessionScope.role == 1 }">
 								<li><a href="check_in.html">Đặt phòng</a></li>
@@ -106,9 +96,8 @@
 				<div
 					class="menu_overlay_content d-flex flex-row align-items-center justify-content-center">
 
-					<!-- Hamburger Button -->
-					<div class="hamburger">
-						<i class="fa fa-bars" aria-hidden="true"></i>
+					<div>
+						<a href="#"><img src="homepage/images/logo_3.png" alt=""></a>
 					</div>
 
 				</div>

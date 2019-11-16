@@ -9,6 +9,7 @@ import java.util.List;
 import model.Service;
 
 
+
 public class ServiceDAO {
 	private static ServiceDAO instance = null;
 	public static ServiceDAO Instance() {
@@ -33,6 +34,7 @@ public class ServiceDAO {
 		}
 		return null;
 	}
+
 	private final static String SELECT_ALL = "select * from service";
 
 	public static List<Service> getHotelService() {
@@ -49,4 +51,34 @@ public class ServiceDAO {
 			return null;
 		}
 	}
+	
+	public boolean removeAllService() {
+		try {
+			boolean result = false;
+			String query = "TRUNCATE service";
+			PreparedStatement preStmt = Connection.Connecter().prepareStatement(query);
+			
+			result = preStmt.execute();
+			return result;
+		} catch (Exception e) {
+			System.out.println("HotelDAO - removeAllService err: " + e);
+		}
+		return false;
+	}
+	public boolean setNewService(String name) {
+		try {
+			boolean result = false;
+			String query = "INSERT INTO service (name) VALUES (?)";
+			PreparedStatement preStmt = Connection.Connecter().prepareStatement(query);
+			preStmt.setString(1, name);
+			
+			result = preStmt.execute();
+			return result;
+		} catch (Exception e) {
+			System.out.println("HotelDAO - setNewService err: " + e);
+		}
+		return false;
+	}
+	
+
 }

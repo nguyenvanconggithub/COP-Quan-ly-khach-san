@@ -37,6 +37,7 @@ public class ImageDAO {
 		}
 		return null;
 	}
+
 	private final static String SELECT_ALL = "select * from image where type = 0";
 
 	public static List<Image> getImageHotel() {
@@ -52,5 +53,46 @@ public class ImageDAO {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	public String getImageLinkByID(String ID) {
+		try {
+			String query = "SELECT link FROM image WHERE image_id = ?";
+			PreparedStatement preStmt = Connection.Connecter().prepareStatement(query);
+			preStmt.setString(1, ID);
+			ResultSet rs = preStmt.executeQuery();
+			if(rs.next()) {
+				return rs.getString("link");
+			}
+		} catch (Exception e) {
+			System.out.println("HotelDAO - getImageLinkByID err: " + e);
+		}
+		return null;
+	}
+	public boolean removeImageByID(String ID) {
+		try {
+			boolean result = false;
+			String query = "DELETE FROM image WHERE image_id = ?";
+			PreparedStatement preStmt = Connection.Connecter().prepareStatement(query);
+			preStmt.setString(1, ID);
+			result = preStmt.execute();
+			return result;
+		} catch (Exception e) {
+			System.out.println("HotelDAO - removeImageByID err: " + e);
+		}
+		return false;
+	}
+	public boolean setNewHotelImage(String path) {
+		try {
+			boolean result = false;
+			String query = "INSERT INTO image (type, link) VALUES(0,?)";
+			PreparedStatement preStmt = Connection.Connecter().prepareStatement(query);
+			preStmt.setString(1, path);
+			result = preStmt.execute();
+			return result;
+		} catch (Exception e) {
+			System.out.println("HotelDAO - setNewHotelImage err: " + e);
+		}
+		return false;
+
 	}
 }

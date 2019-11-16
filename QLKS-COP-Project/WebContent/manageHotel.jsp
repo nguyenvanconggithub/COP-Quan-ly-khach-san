@@ -66,7 +66,7 @@
 							<c:if test="${sessionScope.role == 0 }">
 								<li><a href="manage-hotel">Quản lý khách sạn</a></li>
 								<li><a href="chamber.html">Quản lý phòng</a></li>
-								<li><a href="employee.html">Nhân viên</a></li>
+								<li><a href="employee.html">Quản lý nhân viên</a></li>
 							</c:if>
 							<c:if test="${sessionScope.role == 1 }">
 								<li><a href="check_in.html">Đặt phòng</a></li>
@@ -119,10 +119,29 @@
 		</div>
 		<div class="container" style="margin-top: 350px; margin-bottom: 50px">
 			<div class="container">
+				<c:if test="${requestScope.addSuccess == true}">
+					<div class="alert alert-success" role="alert">
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<strong class="text-center" id="messageInfomation">Cập Nhật Thành Công</strong>
+					</div>
+				</c:if>
+				<c:if test="${requestScope.addSuccess == false}">
+					<div class="alert alert-danger" role="alert">
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<strong class="text-center" id="messageInfomation">Cập Nhật Thất Bại</strong>
+					</div>
+				</c:if>
 				<div class="font-weight-bold lead my-5 text-shadow-blur">Thông
 					tin khách sạn:</div>
-				<form method="POST" class="form">
-				<input type="hidden" name="listRemoveImage" id="listRemoveImage" value="">
+				<form method="POST" class="form" action="manage-hotel" enctype="multipart/form-data">
+					<input type="hidden" name="listRemoveImage" id="listRemoveImage"
+						value="">
 					<div class="row form-group">
 						<label for="tenKhachSan" class="col-sm-12 col-md-2">Tên
 							khách sạn</label>
@@ -145,7 +164,7 @@
 								class="form-control col-sm-12 col-md-8" required>
 						</c:if>
 						<c:if test="${!requestScope.alreadyHaveData }">
-							<input type="text" name="tenKhachSan" id="tenKhachSan"
+							<input type="text" name="diaChi" id="diaChi"
 								class="form-control col-sm-12 col-md-6" required>
 						</c:if>
 					</div>
@@ -166,7 +185,7 @@
 						</c:if>
 						<c:if test="${!requestScope.alreadyHaveData }">
 							<input type="hidden" name="star" id="star"
-								class="form-control col-sm-12 col-md-8" value="0" max="5"
+								class="form-control col-sm-12 col-md-8" value="5" max="5"
 								min="1">
 						</c:if>
 					</div>
@@ -233,15 +252,16 @@
 						của khách sạn ở đây:</div>
 					<div class="row justify-content-center form-group">
 						<c:forEach var="oneImage" items="${requestScope.hotelImage}">
-							<span class="bg-dark d-flex align-items-center justify-content-center position-relative square-150x150 m-2 previewer"
-								id="image-element-loaded"> 
-								<img src="${pageScope.oneImage.getLink()}"
+							<span
+								class="bg-dark d-flex align-items-center justify-content-center position-relative square-150x150 m-2 previewer"
+								id="image-element-loaded"> <img
+								src="${pageScope.oneImage.getLink()}"
 								class="square-150x150 position-absolute" id="preload-img-add">
 								<input type="file" name="imageList"
 								class="square-150x150 position-absolute opacity-0"
 								id="${pageScope.oneImage.getImageId()}"
-								onchange="addMoreImage(this)"> 
-								<span class="position-absolute text-danger cursor-pointer font-weight-bold"
+								onchange="addMoreImage(this)"> <span
+								class="position-absolute text-danger cursor-pointer font-weight-bold"
 								style="top: 0; right: 5%" onclick="deleteImage(this)">X</span>
 							</span>
 
@@ -265,9 +285,6 @@
 		</div>
 	</div>
 	<footer class="footer">
-		<div class="parallax_background parallax-window"
-			data-parallax="scroll" data-image-src="homepage/images/footer.jpg"
-			data-speed="0.8"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col">
