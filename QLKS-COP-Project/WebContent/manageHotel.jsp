@@ -69,7 +69,7 @@
 								<li><a href="employee.html">Nhân viên</a></li>
 							</c:if>
 							<c:if test="${sessionScope.role == 1 }">
-								<li><a href="check_in.html">Đặt phòng</a></li>
+								<li><a href="/check-in">Đặt phòng</a></li>
 								<li><a href="check_out.html">Trả phòng</a></li>
 								<li><a href="service.html">Đặt món</a></li>
 								<li><a href="guest.html">Khách hàng</a></li>
