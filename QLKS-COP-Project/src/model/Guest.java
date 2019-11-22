@@ -6,6 +6,13 @@ public class Guest {
 	private long guestId;
 	private String fullName;
 	private Date birth;
+	private boolean gender;
+	private String address;
+	private String idNo;
+	private String passport;
+	private String phone;
+	private String email;
+	private String note;
 	public long getGuestId() {
 		return guestId;
 	}
@@ -72,11 +79,5 @@ public class Guest {
 	public void setNote(String note) {
 		this.note = note;
 	}
-	private boolean gender;
-	private String address;
-	private String idNo;
-	private String passport;
-	private String phone;
-	private String email;
-	private String note;
+	
 }
