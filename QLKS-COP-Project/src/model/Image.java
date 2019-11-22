@@ -7,15 +7,6 @@ public class Image {
 	public long getImageId() {
 		return imageId;
 	}
-	public Image(long imageId, boolean type, String link) {
-		super();
-		this.imageId = imageId;
-		this.type = type;
-		this.link = link;
-	}
-	public Image() {
-		// TODO Auto-generated constructor stub
-	}
 	public void setImageId(long imageId) {
 		this.imageId = imageId;
 	}
@@ -31,9 +22,12 @@ public class Image {
 	public void setLink(String link) {
 		this.link = link;
 	}
+	
 	@Override
 	public String toString() {
 		return "Image [imageId=" + imageId + ", type=" + type + ", link=" + link + "]";
 	}
+
+	
 	
 }

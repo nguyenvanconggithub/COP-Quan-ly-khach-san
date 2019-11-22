@@ -1,13 +1,32 @@
 package model;
 
+import java.util.ArrayList;
+
+import dto.FoodDTO;
+
 public class Food {
 	private long foodId;
 	private String name;
-	private boolean type;
+	private String type;
 	private String description;
 	private long price;
-	private String image;
+	private long imageId;
 	private String note;
+	
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	private ArrayList<FoodDTO> listFood = new ArrayList<FoodDTO>();
+	
+	public ArrayList<FoodDTO> getListFood() {
+		return listFood;
+	}
+	public void setListFood(ArrayList<FoodDTO> listFood) {
+		this.listFood = listFood;
+	}
 	public long getFoodId() {
 		return foodId;
 	}
@@ -20,17 +39,12 @@ public class Food {
 	@Override
 	public String toString() {
 		return "Food [foodId=" + foodId + ", name=" + name + ", type=" + type + ", description=" + description
-				+ ", price=" + price + ", image=" + image + ", note=" + note + "]";
+				+ ", price=" + price + ", image=" + imageId + ", note=" + note + "]";
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public boolean isType() {
-		return type;
-	}
-	public void setType(boolean type) {
-		this.type = type;
-	}
+	
 	public String getDescription() {
 		return description;
 	}
@@ -43,11 +57,12 @@ public class Food {
 	public void setPrice(long price) {
 		this.price = price;
 	}
-	public String getImage() {
-		return image;
+	
+	public Long getImageId() {
+		return imageId;
 	}
-	public void setImage(String image) {
-		this.image = image;
+	public void setImageId(Long imageId) {
+		this.imageId = imageId;
 	}
 	public String getNote() {
 		return note;
@@ -55,4 +70,17 @@ public class Food {
 	public void setNote(String note) {
 		this.note = note;
 	}
+	public Food() {
+		
+	}
+	public Food(String name, String type, String description, long price, long imageId) {
+		super();
+		this.name = name;
+		this.type = type;
+		this.description = description;
+		this.price = price;
+		this.imageId = imageId;
+	}
+	
+	
 }

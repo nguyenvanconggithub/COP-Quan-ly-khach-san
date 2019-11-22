@@ -1,6 +1,6 @@
 package model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Booking {
 	private long bookingId;
@@ -11,7 +11,7 @@ public class Booking {
 	private Date checkInDate;
 	private Date checkOutDate;
 	private String chamberType;
-	private String chamberQuantity;
+	private int chamberQuantity;
 	private boolean isCheckIn;
 	private String note;
 	public long getBookingId() {
@@ -69,15 +69,19 @@ public class Booking {
 	public void setChamberType(String chamberType) {
 		this.chamberType = chamberType;
 	}
-	public String getChamberQuantity() {
+	public int getChamberQuantity() {
 		return chamberQuantity;
 	}
-	public void setChamberQuantity(String chamberQuantity) {
+	public boolean getIsCheckIn() {
+		return isCheckIn;
+	}
+	public void setChamberQuantity(int chamberQuantity) {
 		this.chamberQuantity = chamberQuantity;
 	}
 	public boolean isCheckIn() {
 		return isCheckIn;
 	}
+	
 	public void setCheckIn(boolean isCheckIn) {
 		this.isCheckIn = isCheckIn;
 	}
