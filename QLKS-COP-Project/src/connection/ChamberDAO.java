@@ -26,18 +26,19 @@ public class ChamberDAO {
 
 	private final static String SELECT_ONE_CHAMBER = "select * from chamber where chamber_id = ?";
 
-	private final static String UPDATE_CHAMBER_STATUS = "update chamber set is_emty = 1 where chamber_id = ?";
+	private final static String UPDATE_CHAMBER_STATUS = "update chamber set is_emty = ? where chamber_id = ?";
 
-	public static boolean updateChamberStatus(long chamberId) {
+	public static boolean updateChamberStatus(long chamberId,boolean status) {
 		try {
 			PreparedStatement pre = Connection.getPre(UPDATE_CHAMBER_STATUS);
-			pre.setLong(1, chamberId);
+			pre.setBoolean(1, status);
+			pre.setLong(2, chamberId);
 			return !pre.execute();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return true;
+		return false;
 	}
 
 	public static List<Chamber> getChamberWS() {
@@ -116,7 +117,7 @@ public class ChamberDAO {
 			}
 			PreparedStatement pre = Connection.getPre(sql);
 			pre.setInt(1, chamberType);
-			pre.setInt(2, (page - 1) * items);
+			pre.setInt(2, (page - 1));
 			pre.setInt(3, items);
 			ResultSet rs = pre.executeQuery();
 			List<Chamber> listChamberCheckIn = new ArrayList<Chamber>();

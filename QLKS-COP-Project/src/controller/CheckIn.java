@@ -16,10 +16,11 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import com.google.gson.Gson;
 
+import connection.BillDAO;
 import connection.ChamberDAO;
 import connection.GuestDAO;
 import dto.AjaxRespond;
-import dto.CheckInInfoDto;
+import dto.CheckInInfoDTO;
 import model.Chamber;
 
 @WebServlet(urlPatterns = { "/check-in", "/find-chamber", "/rent-chamber" })
@@ -158,8 +159,8 @@ public class CheckIn extends HttpServlet {
 
 	private void findChamber(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		long chamberId = Long.valueOf(req.getParameter("id"));
-		Gson gson = new Gson();
 		Chamber chamber = ChamberDAO.findChamberById(chamberId);
+		Gson gson = new Gson();
 		PrintWriter out = resp.getWriter();
 		out.print(gson.toJson(chamber));
 		out.flush();
@@ -167,17 +168,19 @@ public class CheckIn extends HttpServlet {
 	}
 
 	private void rentChamber(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(req.getInputStream(),"UTF-8"));
+		BufferedReader br = new BufferedReader(new InputStreamReader(req.getInputStream(), "UTF-8"));
 		String json = "";
 		if (br != null) {
 			json = br.readLine();
 		}
 		ObjectMapper mapper = new ObjectMapper();
-		CheckInInfoDto checkInInfo = mapper.readValue(json, CheckInInfoDto.class);
-		boolean checkUpdateChamber = ChamberDAO.updateChamberStatus(checkInInfo.getChamberId());
+		CheckInInfoDTO checkInInfo = mapper.readValue(json, CheckInInfoDTO.class);
+		boolean checkUpdateChamber = ChamberDAO.updateChamberStatus(checkInInfo.getChamberId(),true);
 		boolean checkInsertGuest = GuestDAO.checkIn(checkInInfo.getGuest());
+		boolean checkInsertBill = BillDAO.createBill(checkInInfo.getNote(), GuestDAO.getGuestId());
+		boolean checkInsertBillChamber = BillDAO.createBillChamber(checkInInfo.getChamberId());
 		AjaxRespond result = new AjaxRespond();
-		if (checkInsertGuest && checkUpdateChamber) {
+		if (checkInsertGuest && checkUpdateChamber && checkInsertBill && checkInsertBillChamber) {
 			result.setMessage("Check in thành công!");
 		} else {
 			result.setMessage("Thông tin lỗi vui lòng thử lại!");

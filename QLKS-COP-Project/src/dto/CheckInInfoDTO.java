@@ -4,7 +4,7 @@ import java.util.Date;
 
 import model.Guest;
 
-public class CheckInInfoDto {
+public class CheckInInfoDTO {
 	private long chamberId;
 	private String fullName;
 	private Date birth;
@@ -91,6 +91,10 @@ public class CheckInInfoDto {
 				+ ", email=" + email + ", note=" + note + "]";
 	}
 
+	public CheckInInfoDTO() {
+		super();
+	}
+
 	public String getNote() {
 		return note;
 	}
@@ -106,6 +110,6 @@ public class CheckInInfoDto {
 
 	public Guest getGuest() {
 		return new Guest(this.fullName, this.birth, this.gender, this.address, this.idNo, this.passport, this.phone,
-				this.email, this.note);
+				this.email);
 	}
 }

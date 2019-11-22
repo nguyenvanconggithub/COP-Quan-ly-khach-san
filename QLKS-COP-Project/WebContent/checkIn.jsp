@@ -66,9 +66,9 @@
 							</c:if>
 							<c:if test="${sessionScope.role == 1 }">
 								<li><a href="/check-in">Đặt phòng</a></li>
-								<li><a href="check_out.html">Trả phòng</a></li>
-								<li><a href="service.html">Đặt món</a></li>
-								<li><a href="guest.html">Khách hàng</a></li>
+								<li><a href="/check-out">Trả phòng</a></li>
+								<li><a href="/order">Đặt món</a></li>
+								<li><a href="/guest">Khách hàng</a></li>
 							</c:if>
 							<c:if test="${sessionScope.role == 2 }">
 								<li><a href="manage_service.html">Quản lý thực đơn</a></li>
@@ -218,7 +218,7 @@
 								</c:when>
 								<c:otherwise>
 									<li class="page-item"><a class="page-link"
-										href="/check-in?page=1">First</a></li>
+										href="/check-in?page=1&p=${currentPrice}&t=${currentType}">First</a></li>
 									<li class="page-item"><a class="page-link"
 										href="/check-in?page=${requestScope.page - 1}&p=${currentPrice}&t=${currentType}">«</a></li>
 								</c:otherwise>
@@ -503,15 +503,14 @@
 
 							$("#check-in-form").submit(function(event) {
 								event.preventDefault();
-								fire_ajax_submit();
+								ajaxCheckIn();
 							});
 
 						});
 
-		function fire_ajax_submit() {
+		function ajaxCheckIn() {
 
 			var checkIn = new Object();
-
 			checkIn["fullName"] = $("#name").val();
 			checkIn["idNo"] = $("#card").val();
 			checkIn["birth"] = $("#birth").val();
