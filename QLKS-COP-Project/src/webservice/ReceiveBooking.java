@@ -2,9 +2,6 @@ package webservice;
 
 import java.io.IOException;
 
-import javax.inject.Inject;
-import javax.management.loading.PrivateClassLoader;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,10 +16,7 @@ import utils.HttpUtil;
 
 @WebServlet(urlPatterns = {"/api-booking"})
 public class ReceiveBooking extends HttpServlet {
-
-
 	private static final long serialVersionUID = 7590927997101261591L;
-
 	private BookingDAO bookingDAO;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
