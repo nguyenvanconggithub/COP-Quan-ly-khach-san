@@ -370,6 +370,7 @@
 								e.preventDefault();
 								var href = $(this).attr('href');
 								$.get(href, function(data, status) {
+									console.log(data)
 									var guests = $.parseJSON(data);
 									if (guests.gender) {
 										$("#gender option[value=true]").prop(

@@ -62,6 +62,7 @@ public class CheckOut extends HttpServlet {
 
 	private void getCheckOutInfo(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		resp.setCharacterEncoding("UTF-8");
 		String chamberNumber = req.getParameter("n");
 		CheckOutDTO checkOutInfo = BillDAO.getCheckOutInfo(chamberNumber);
 		Gson gson = new Gson();

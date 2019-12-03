@@ -370,12 +370,12 @@
 					$('#price').val(data.price);
 					$('#name').val(data.fullName);
 					$('#card').val(data.idNo);
-					$('#birth').val(data.birth);
+					$('#birth').val(formatDate(data.birth));
 					$('#passport').val(data.passport);
 					$('#address').val(data.address);
 					$('#phone').val(data.phone);
 					$('#email').val(data.email);
-					$('#check-in-date').val(data.checkInDate);
+					$('#check-in-date').val(formatDate(data.checkInDate));
 					$('#stay').val(data.stayDays);
 					$('#rent').val(data.rentMoney);
 					$('#total-pay').val(data.rentMoney);
@@ -444,6 +444,18 @@
 					$('#total-pay').simpleMoneyFormat();
 				}
 			}
+		}
+
+		function formatDate(date) {
+			var d = new Date(date), month = '' + (d.getMonth() + 1), day = ''
+					+ d.getDate(), year = d.getFullYear();
+
+			if (month.length < 2)
+				month = '0' + month;
+			if (day.length < 2)
+				day = '0' + day;
+
+			return [ day, month, year ].join('-');
 		}
 	</script>
 

@@ -111,6 +111,7 @@ public class Guest extends HttpServlet {
 	}
 
 	private void findGuest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setCharacterEncoding("UTF-8");
 		long guestId = Long.valueOf(req.getParameter("id"));
 		model.Guest guest = GuestDAO.findGuest(guestId);
 		Gson gson = new Gson();
