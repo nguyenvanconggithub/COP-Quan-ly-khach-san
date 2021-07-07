@@ -149,7 +149,7 @@ CREATE TABLE `chamber` (
   `price` bigint(20) NOT NULL,
   `floor` int(11) NOT NULL,
   `is_vip` bit(1) NOT NULL,
-  `is_emty` bit(1) NOT NULL,
+  `is_empty` bit(1) NOT NULL,
   `note` varchar(125) DEFAULT NULL,
   PRIMARY KEY (`chamber_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

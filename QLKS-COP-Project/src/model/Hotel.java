@@ -8,6 +8,13 @@ public class Hotel {
 	public String getHotelName() {
 		return hotelName;
 	}
+	public Hotel(String hotelName, int star, String address, long price) {
+		super();
+		this.hotelName = hotelName;
+		this.star = star;
+		this.address = address;
+		this.price = price;
+	}
 	public void setHotelName(String hotelName) {
 		this.hotelName = hotelName;
 	}
